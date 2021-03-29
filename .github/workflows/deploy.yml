@@ -37,6 +37,12 @@ jobs:
         run: 'mvn -B package --file pom.xml'
         shell: bash
 
+      - name: Run pwd
+        run: pwd
+
+      - name: Run ls -al
+        run: ls -al
+
       - name: Generate deployment package
         run: |
           mkdir -p deploy
