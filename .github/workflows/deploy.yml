@@ -43,6 +43,9 @@ jobs:
       - name: Run ls -al
         run: ls -al
 
+      - name: Run target ls -al
+        run: ls -al ./target
+
       - name: Generate deployment package
         run: |
           mkdir -p deploy
