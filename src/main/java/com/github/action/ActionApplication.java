@@ -32,5 +32,10 @@ public class ActionApplication {
         return "healthy";
     }
 
+    @GetMapping("/marimox")
+    public String marimox() {
+        return "marimox";
+    }
+
 
 }
