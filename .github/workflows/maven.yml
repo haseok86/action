@@ -23,9 +23,9 @@ jobs:
           java-version: 11
 
       - name: Grant execute permission for maven
-        run: chmod +x mvn # (6)
+        run: chmod +x ./mvn # (6)
         shell: bash
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml # (7)
+        run: ./mvn -B package --file pom.xml # (7)
         shell: bash
