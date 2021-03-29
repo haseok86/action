@@ -1,5 +1,6 @@
 package com.github.action;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,4 +18,19 @@ public class ActionApplication {
     public String hello() {
         return "hello world";
     }
+
+    @Value("${logging-module-version}")
+    private String version;
+
+    @GetMapping("/")
+    public String version() {
+        return String.format("Project Version : %s", version);
+    }
+
+    @GetMapping("/health")
+    public String checkHealth() {
+        return "healthy";
+    }
+
+
 }
