@@ -4,16 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 @RestController
 public class ActionApplication {
 
     @Autowired
-    Environment environment;
+    ApplicationContext applicationContext;
 
     public static void main(String[] args) {
         SpringApplication.run(ActionApplication.class, args);
@@ -44,10 +47,8 @@ public class ActionApplication {
 
     @GetMapping("/profile")
     public String profile() {
-
-        final String[] activeProfiles = environment.getActiveProfiles();
-
-        return activeProfiles.toString();
+        final Environment environment = applicationContext.getEnvironment();
+        return Arrays.toString(environment.getActiveProfiles());
     }
 
 
