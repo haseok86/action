@@ -1,14 +1,19 @@
 package com.github.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
 public class ActionApplication {
+
+    @Autowired
+    Environment environment;
 
     public static void main(String[] args) {
         SpringApplication.run(ActionApplication.class, args);
@@ -35,6 +40,14 @@ public class ActionApplication {
     @GetMapping("/marimox")
     public String marimox() {
         return "marimox";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+
+        final String[] activeProfiles = environment.getActiveProfiles();
+
+        return activeProfiles.toString();
     }
 
 
